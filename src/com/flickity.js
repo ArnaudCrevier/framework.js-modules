@@ -165,7 +165,7 @@
 				}
 				
 				App.callback(o.inited);
-			} else if (slider.find(o.cellSelector.length == 1)) {
+			} else if (slider.find(o.cellSelector).length == 1) {
 				slider.addClass(o.abortedClass);
 				slider.find(o.cellSelector).addClass(o.selectedClass);
 				App.callback(o.aborted);
