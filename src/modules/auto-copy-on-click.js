@@ -19,7 +19,7 @@
 		var t = $(this);
 		var parent = t.closest('.js-copy-ctn');
 		var message = parent.find(sels.message);
-		var delay = 1500;
+		var delay = t.attr('data-message-delay');
 		
 		parent.find(sels.toCopy).each(function () {
 			$(this).select();
