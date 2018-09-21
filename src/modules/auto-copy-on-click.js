@@ -8,6 +8,7 @@
 
 	var site = $('#site');
 	var sels = {
+
 		toCopy: '.js-text-to-copy',
 		copyBtn: '.js-copy-on-click-btn',
 		message: '.js-confirm-message'
@@ -15,16 +16,18 @@
 	var timer = null;
 
 	var onClick = function () {
+		var t = $(this);
+		var parent = t.closest('.js-copy-ctn');
+		var message = parent.find(sels.message);
 		var delay = 1500;
 		
-		site.find(sels.toCopy).each(function () {
-			var t = $(this);
-			t.select();
+		parent.find(sels.toCopy).each(function () {
+			$(this).select();
 			document.execCommand('copy');
 		});
 
 		App.modules.notify('changeState.update', {
-			item: site.find(sels.message),
+			item: message,
 			state: 'visible',
 			action: 'on'
 		});
@@ -32,7 +35,7 @@
 		clearTimeout(timer);
 		timer = setTimeout(function () {
 			App.modules.notify('changeState.update', {
-				item: site.find(sels.message),
+				item: parent.find(sels.message),
 				state: 'visible',
 				action: 'off'
 			});
