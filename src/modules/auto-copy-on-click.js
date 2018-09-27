@@ -8,7 +8,6 @@
 
 	var site = $('#site');
 	var sels = {
-
 		toCopy: '.js-text-to-copy',
 		copyBtn: '.js-copy-on-click-btn',
 		message: '.js-confirm-message'
