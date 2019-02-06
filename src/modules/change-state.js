@@ -34,6 +34,8 @@
 	'use strict';
 	var win = $(window);
 
+	var noop = function () {};
+
 	var isSvgElement = function (item) {
 		return !!item && !!item.length &&
 			item[0].nodeName == 'polygon' ||
@@ -137,13 +139,13 @@
 		var setSvgItemState = function () {
 			if (item[0].classList) {
 				if (flag) {
-					item[0].classList.add(addClass);
-					item[0].classList.remove(remClass);
-					item[0].classList.add(flagClass);
+					!!addClass ? item[0].classList.add(addClass) : noop();
+					!!remClass ? item[0].classList.remove(remClass) : noop();
+					!!flagClass ? item[0].classList.add(flagClass) : noop();
 				} else {
-					item[0].classList.remove(addClass);
-					item[0].classList.add(remClass);
-					item[0].classList.remove(flagClass);
+					!!addClass ? item[0].classList.remove(addClass) : noop();
+					!!remClass ? item[0].classList.add(remClass) : noop();
+					!!flagClass ? item[0].classList.remove(flagClass): noop();
 				}
 			} else {
 				ieBehavior();
