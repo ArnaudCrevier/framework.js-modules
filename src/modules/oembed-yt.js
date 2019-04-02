@@ -29,6 +29,7 @@
 					.attr('id', 'youtube-player-' + id)
 					.attr('src', '//www.youtube.com/embed/' + id +
 						'?feature=oembed&autoplay=' + autoPlay +
+						'&mute=' + autoPlay +
 						'&enablejsapi=1&version=3&html5=1&rel=' + rel + (extra || ''));
 				
 				App.loaded(YT, function (Player) {
