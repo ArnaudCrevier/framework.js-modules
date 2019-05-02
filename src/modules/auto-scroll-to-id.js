@@ -27,8 +27,10 @@
 		}
 		
 		if (!!offsetSelector) {
-			var offsetItem = $(offsetSelector).eq(0);
-			offset = offsetItem.height() * -1;
+			var offsetItem = $(offsetSelector).each(function () {
+				var t = $(this);
+				offset += t.height() * -1;
+			});
 		}
 		
 		var target = site.find('#' + h);
