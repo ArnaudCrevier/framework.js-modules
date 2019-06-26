@@ -27,9 +27,8 @@
 		}
 		
 		if (!!offsetSelector) {
-			$(offsetSelector).each(function () {
-				var t = $(this);
-				offset -= t.height();
+			$(offsetSelector).each(function (i, e) {
+				offset -= $(e).height();
 			});
 		}
 		
