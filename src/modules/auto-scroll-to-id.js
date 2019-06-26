@@ -27,9 +27,9 @@
 		}
 		
 		if (!!offsetSelector) {
-			var offsetItem = $(offsetSelector).each(function () {
+			$(offsetSelector).each(function () {
 				var t = $(this);
-				offset += t.height() * -1;
+				offset -= t.height();
 			});
 		}
 		
