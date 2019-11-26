@@ -13,8 +13,16 @@
 			ctn.css({
 				minHeight: current.height() + 'px'
 			});
+			App.mediator.notify('articleChanger.leaving', {
+				item: current,
+				article: current
+			});
 			current.fadeTo(500, 0, function () {
 				current.hide();
+				App.mediator.notify('articleChanger.leave', {
+					item: current,
+					article: current
+				});
 				callback(current, next, o);
 			});
 		} else {
