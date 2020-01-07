@@ -21,10 +21,10 @@
 		return {
 			pages: {
 				failedtoparse: function (key, data) {
-					
+					defaultLoadFatalError(key, data);
 				},
 				loaderror: function (key, data) {
-					
+					defaultLoadFatalError(key, data);
 				},
 				loadfatalerror: function (key, data) {
 					defaultLoadFatalError(key, data);
