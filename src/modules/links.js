@@ -119,6 +119,7 @@
 		var dataAttrExclusions = ':not([data-action="full"])' +
 			':not([data-action="toggle"])' +
 			':not([data-action="none"])';
+		var downloadExclusion = ':not([download])';
 		var localLinks = 'a[href^="' + origin + '"]';
 		var localWorkspaceExclusion = ':not(a[href^="' + origin + '/workspace"])';
 		var toggleLinks = '[data-action="toggle"]';
@@ -126,11 +127,18 @@
 		var queryStringLinks = 'a[href^="?"]';
 		var click = App.device.events.click;
 
+		var normalLinks = absoluteLinks + workspaceExclusion +
+			dataAttrExclusions + downloadExclusion;
+		var normalQueryLinks = queryStringLinks + workspaceExclusion +
+			dataAttrExclusions + downloadExclusion;
+		var normalLocalLinks = localLinks + dataAttrExclusions +
+			localWorkspaceExclusion + downloadExclusion;
+		
 		// capture all click in #site
 		$('#site')
-			.on(click, absoluteLinks + workspaceExclusion + dataAttrExclusions, onClickGoto)
-			.on(click, queryStringLinks + workspaceExclusion + dataAttrExclusions, onClickGoto)
-			.on(click, localLinks + dataAttrExclusions + localWorkspaceExclusion, onClickGoto)
+			.on(click, normalLinks, onClickGoto)
+			.on(click, normalQueryLinks, onClickGoto)
+			.on(click, normalLocalLinks, onClickGoto)
 			.on(click, absoluteLinks + toggleLinks, onClickToggle)
 			.on(click, queryStringLinks + toggleLinks, onClickToggle);
 	};
